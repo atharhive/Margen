@@ -21,19 +21,19 @@ export const EvidenceAndCaseStudiesSection: React.FC<
               className="font-display text-[30px] font-medium leading-[1.3] tracking-[-0.54px] text-[#2e2e2e] sm:text-[36px]"
               style={{ textWrap: 'balance' }}
             >
-              Measured outcomes across labs, archives, and patent desks.
+              What happens when people stop burying sources in folders.
             </h2>
             <p className="mt-4 text-[17px] leading-[1.55] text-[#454545]">
-              Every metric below is paired directly with the research group and
-              source corpus that produced it.
+              Three real groups from our early cohorts and what changed once
+              they moved their reading onto a spatial table.
             </p>
           </div>
           <button
             type="button"
-            onClick={() => onSelectWorkflow('Lab / Institutional Pilot')}
+            onClick={() => onSelectWorkflow('Lab / Institutional Batch')}
             className="cursor-pointer self-start whitespace-nowrap shrink-0 bg-transparent text-[18px] font-medium leading-[27px] text-[#207dff] underline-offset-4 hover:underline md:self-auto"
           >
-            Request institutional pilot
+            Join the next onboarding batch
           </button>
         </div>
 

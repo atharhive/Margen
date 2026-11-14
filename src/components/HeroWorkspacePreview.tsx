@@ -18,16 +18,22 @@ import {
 
 interface HeroWorkspacePreviewProps {
   onRequestAccess: (context?: string) => void;
+  waitlistEntry: { email: string; position: number; focus: string } | null;
+  onJoinWaitlistDirect: (email: string, focus: string) => void;
 }
 
 export const HeroWorkspacePreview: React.FC<HeroWorkspacePreviewProps> = ({
   onRequestAccess,
+  waitlistEntry,
+  onJoinWaitlistDirect,
 }) => {
   const [mode, setMode] = useState<AudienceMode>('individual');
   const [isPlaying, setIsPlaying] = useState(true);
   const [activeStepIndex, setActiveStepIndex] = useState(0);
   const [selectedCardId, setSelectedCardId] = useState<string>('c1');
   const [backdropError, setBackdropError] = useState(false);
+  const [heroEmail, setHeroEmail] = useState('');
+  const [heroEmailError, setHeroEmailError] = useState('');
 
   const data = HERO_MODE_DATA[mode];
   const currentStep = data.loopSteps[activeStepIndex];
@@ -61,6 +67,20 @@ export const HeroWorkspacePreview: React.FC<HeroWorkspacePreviewProps> = ({
     el?.scrollIntoView({ behavior: 'smooth', block: 'center' });
   };
 
+  const handleHeroWaitlistSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const trimmed = heroEmail.trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmed)) {
+      setHeroEmailError('Enter a valid email address to join the waitlist.');
+      return;
+    }
+    setHeroEmailError('');
+    onJoinWaitlistDirect(
+      trimmed,
+      mode === 'individual' ? 'Individual Researcher' : 'Lab / Research Team'
+    );
+  };
+
   const cardById = (id: string) => data.cards.find((c) => c.id === id);
 
   return (
@@ -85,7 +105,7 @@ export const HeroWorkspacePreview: React.FC<HeroWorkspacePreviewProps> = ({
                   : 'text-[#6a6972] hover:text-[#2e2e2e]'
               }`}
             >
-              Individual Scholars
+              For Researchers
             </button>
             <button
               type="button"
@@ -98,7 +118,7 @@ export const HeroWorkspacePreview: React.FC<HeroWorkspacePreviewProps> = ({
                   : 'text-[#6a6972] hover:text-[#2e2e2e]'
               }`}
             >
-              Research Teams
+              For Labs &amp; Teams
             </button>
           </div>
 
@@ -118,26 +138,77 @@ export const HeroWorkspacePreview: React.FC<HeroWorkspacePreviewProps> = ({
           </AnimatePresence>
 
           {/* Introductory Copy: Inter 18px/400, 27px leading */}
-          <p className="mt-5 max-w-[600px] text-[18px] font-normal leading-[27px] text-[#454545]">
+          <p className="mt-5 max-w-[620px] text-[18px] font-normal leading-[27px] text-[#454545]">
             {data.subcopy}
           </p>
 
-          {/* Hero Primary Charcoal Pill + Editorial Blue Link */}
-          <div className="mt-8 flex flex-wrap items-center justify-center gap-6">
-            <button
-              type="button"
-              onClick={() => onRequestAccess(mode === 'individual' ? 'Individual Scholar' : 'Research Team')}
-              className="cursor-pointer whitespace-nowrap shrink-0 rounded-full bg-[#2e2e2e] px-[26px] py-[11px] text-[16px] font-semibold leading-[20px] text-[#fdfcfb] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-[#454545] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#207dff]"
-            >
-              {data.primaryCta}
-            </button>
-            <button
-              type="button"
-              onClick={handleWatchLoop}
-              className="cursor-pointer whitespace-nowrap shrink-0 bg-transparent text-[18px] font-medium leading-[27px] text-[#207dff] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#207dff]"
-            >
-              Watch live desk loop
-            </button>
+          {/* Inline Waitlist Form + Editorial Blue Link */}
+          <div className="mt-8 flex w-full max-w-[520px] flex-col items-center gap-3">
+            {waitlistEntry ? (
+              <div
+                role="status"
+                className="flex w-full flex-col items-center justify-between gap-2 rounded-[8px] border border-[#e4ded3] bg-[#f0f0ea] px-4 py-3 text-left sm:flex-row"
+              >
+                <div className="text-[14px] text-[#2e2e2e]">
+                  <span className="font-semibold tabular-nums">
+                    Spot #{waitlistEntry.position} reserved
+                  </span>{' '}
+                  <span className="text-[#454545]">for {waitlistEntry.email}</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => onRequestAccess(waitlistEntry.focus)}
+                  className="cursor-pointer whitespace-nowrap text-[13px] font-medium text-[#207dff] underline-offset-4 hover:underline"
+                >
+                  View waitlist status
+                </button>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleHeroWaitlistSubmit}
+                noValidate
+                className="flex w-full flex-col gap-2.5 sm:flex-row"
+              >
+                <label htmlFor="hero-waitlist-email" className="sr-only">
+                  Email address for waitlist
+                </label>
+                <input
+                  id="hero-waitlist-email"
+                  type="email"
+                  value={heroEmail}
+                  onChange={(e) => {
+                    setHeroEmail(e.target.value);
+                    if (heroEmailError) setHeroEmailError('');
+                  }}
+                  placeholder="you@domain.com"
+                  className="min-w-0 flex-1 rounded-full border border-black/[0.15] bg-[#fdfcfb] px-5 py-[11px] text-[15px] text-[#2e2e2e] placeholder:text-[#a8a8a8] focus:border-[#207dff] focus:outline-none"
+                />
+                <button
+                  type="submit"
+                  className="cursor-pointer whitespace-nowrap shrink-0 rounded-full bg-[#2e2e2e] px-[24px] py-[11px] text-[16px] font-semibold leading-[20px] text-[#fdfcfb] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-[#454545] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#207dff]"
+                >
+                  {data.primaryCta}
+                </button>
+              </form>
+            )}
+
+            {heroEmailError && (
+              <p role="alert" className="text-[13px] font-medium text-[#c0392b]">
+                {heroEmailError}
+              </p>
+            )}
+
+            <div className="mt-1 flex flex-wrap items-center justify-center gap-4 text-[14px] text-[#6a6972]">
+              <span>Weekly Tuesday onboarding · Free during early access</span>
+              <span aria-hidden="true">·</span>
+              <button
+                type="button"
+                onClick={handleWatchLoop}
+                className="cursor-pointer whitespace-nowrap shrink-0 bg-transparent font-medium text-[#207dff] underline-offset-4 hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#207dff]"
+              >
+                Watch 4-step demo below
+              </button>
+            </div>
           </div>
         </div>
 

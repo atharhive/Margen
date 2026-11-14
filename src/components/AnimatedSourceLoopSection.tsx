@@ -61,12 +61,12 @@ export const AnimatedSourceLoopSection: React.FC = () => {
             className="font-display text-[30px] font-medium leading-[1.3] tracking-[-0.54px] text-[#2e2e2e] sm:text-[36px]"
             style={{ textWrap: 'balance' }}
           >
-            Drop raw artifacts. Watch claims link themselves.
+            Drop in anything you&apos;re reading. Pull out the parts that matter.
           </h2>
           <p className="mt-4 text-[17px] leading-[1.55] text-[#454545]">
-            Whether a document arrives as a 600-page monograph, a patent claim
-            tree, handwritten lab calipers, or an archival microfiche plate,
-            Margen parses structure without detaching coordinates.
+            PDFs, patent filings, scanned lab notebooks, or archival plates—click
+            any source below to watch how Margen lifts out a claim and wires it
+            straight back to the page it came from.
           </p>
         </div>
 

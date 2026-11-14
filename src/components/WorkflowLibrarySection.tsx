@@ -22,11 +22,11 @@ export const WorkflowLibrarySection: React.FC<WorkflowLibrarySectionProps> = ({
             className="font-display text-[30px] font-medium leading-[1.3] tracking-[-0.54px] text-[#2e2e2e] sm:text-[36px]"
             style={{ textWrap: 'balance' }}
           >
-            Start from a proven reading architecture.
+            Four ways people actually use Margen.
           </h2>
           <p className="mt-4 text-[17px] leading-[1.55] text-[#454545]">
-            Open any spatial desk template below to preview how source cards,
-            divergences, and primary provenance columns fit together.
+            Click any layout below to see how researchers organize papers, patent
+            claims, clinical trials, or engineering specs on one desk.
           </p>
         </div>
 
@@ -97,7 +97,7 @@ export const WorkflowLibrarySection: React.FC<WorkflowLibrarySectionProps> = ({
                 onClick={() => onUseTemplate(selectedTemplate.title)}
                 className="cursor-pointer whitespace-nowrap shrink-0 bg-transparent text-[15px] font-medium text-[#207dff] underline-offset-4 hover:underline"
               >
-                Request access with this template
+                Join waitlist for this workflow
               </button>
             </div>
 

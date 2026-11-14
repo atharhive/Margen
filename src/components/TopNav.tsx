@@ -9,10 +9,10 @@ export const TopNav: React.FC<TopNavProps> = ({ onStartResearch }) => {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const navLinks = [
-    { label: 'Workspace', href: '#workspace' },
-    { label: 'Synthesis', href: '#synthesis' },
-    { label: 'Case Studies', href: '#case-studies' },
-    { label: 'Library', href: '#library' },
+    { label: 'Why Margen', href: '#why-margen' },
+    { label: 'How It Works', href: '#workspace' },
+    { label: 'Examples', href: '#case-studies' },
+    { label: 'Templates', href: '#library' },
   ];
 
   return (
@@ -66,7 +66,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onStartResearch }) => {
             onClick={onStartResearch}
             className="hidden whitespace-nowrap shrink-0 cursor-pointer rounded-full bg-[#2e2e2e] px-[22px] py-[7px] text-[16px] font-medium leading-[20px] text-[#fdfcfb] transition-all duration-150 ease-[cubic-bezier(0.16,1,0.3,1)] hover:bg-[#454545] active:scale-[0.98] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#207dff] sm:inline-flex"
           >
-            Start Research
+            Join Waitlist
           </button>
 
           <button
@@ -103,7 +103,7 @@ export const TopNav: React.FC<TopNavProps> = ({ onStartResearch }) => {
               }}
               className="mt-2 w-full rounded-full bg-[#2e2e2e] px-[22px] py-[10px] text-[16px] font-medium text-[#fdfcfb]"
             >
-              Start Research
+              Join Waitlist
             </button>
           </nav>
         </div>

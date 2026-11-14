@@ -16,23 +16,23 @@ export const CapabilitiesAndPaperSection: React.FC = () => {
   const paperFeatures = [
     {
       index: '01.',
-      title: 'Page-Anchored Excerpts',
-      body: 'Highlight an equation, table cell, or manuscript paragraph and pin it onto your desk without severing its page number or edition history.',
+      title: 'Quotes Never Lose Their Page',
+      body: 'Clip an equation, table cell, or paragraph onto your desk. Click it months later and the original PDF opens straight to that line.',
     },
     {
       index: '02.',
-      title: 'Bidirectional Citation Threads',
-      body: 'Trace upstream primary evidence and downstream replications across every desk at once. Contradictions surface before you draft.',
+      title: 'See What Disagrees',
+      body: 'Put a new study next to an older dataset on the same table. When two papers contradict each other, the conflict sits right in front of you.',
     },
     {
       index: '03.',
-      title: 'Side-by-Side Plate Calibration',
-      body: 'Place scanned lab notebooks, lithograph plates, and modern CSV datasets on the same grid to compare measurements directly.',
+      title: 'Mix Scans, PDFs, and Tables',
+      body: 'Read handwritten lab notebooks beside clean spreadsheets and archival plates without jumping across four separate apps.',
     },
     {
       index: '04.',
-      title: 'Verifiable Monograph Export',
-      body: 'Compile spatial boards into structured LaTeX, Markdown, or Word manuscripts with every inline footnote automatically formatted.',
+      title: 'Turn Your Desk Into a Paper',
+      body: 'Once the argument makes sense spatially, export your board straight into Markdown, Word, or LaTeX with every footnote intact.',
     },
   ];
 
@@ -53,12 +53,11 @@ export const CapabilitiesAndPaperSection: React.FC = () => {
             className="font-display text-[30px] font-medium leading-[1.3] tracking-[-0.54px] text-[#2e2e2e] sm:text-[36px]"
             style={{ textWrap: 'balance' }}
           >
-            Built like a physical reading table, backed by a live citation graph.
+            Spread your work out like paper, without losing a single citation.
           </h2>
           <p className="mt-4 text-[17px] leading-[1.55] text-[#454545]">
-            Most note tools force deep research into narrow linear documents.
-            Margen keeps primary evidence, replications, and counter-studies
-            visible side by side.
+            Note apps trap your ideas in single-file outlines. Margen keeps
+            primary evidence, replications, and counter-arguments visible together.
           </p>
         </div>
 
