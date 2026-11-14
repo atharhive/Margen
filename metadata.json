@@ -1,0 +1,6 @@
+{
+  "name": "Margen",
+  "description": "A sunlit spatial research bench for dissecting primary sources, tracing live citations, and synthesizing monographs.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
