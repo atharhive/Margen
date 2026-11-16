@@ -70,3 +70,7 @@ Vite prints the local development URL after startup. The `dev` script binds to `
 ## Technology
 
 React 19 · TypeScript · Vite · Tailwind CSS 4 · Motion · Lucide
+
+## License
+
+The source files declare the Apache-2.0 license. A separate `LICENSE` file is not currently included; add one before relying on this project as a formally licensed distribution.
