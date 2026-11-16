@@ -28,3 +28,14 @@ The repository currently contains a polished, interactive frontend prototype. It
 - **Collects local waitlist details.** The demo stores an entry in the current browser's `localStorage`; it does not submit the entry to a server.
 
 These describe the interface and intended workflow shown in the prototype, not guarantees of production document-processing functionality.
+
+## Project status
+
+Margen is an experiment built with Gemini 4 Carbon. The current repository is a frontend prototype intended to communicate a possible research workflow and product direction. Backend ingestion, document parsing, shared workspaces, authentication, and a server-backed waitlist are not implemented here.
+
+## Run locally
+
+### Requirements
+
+- Node.js compatible with the installed Vite version
+- npm
