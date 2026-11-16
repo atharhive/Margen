@@ -39,3 +39,34 @@ Margen is an experiment built with Gemini 4 Carbon. The current repository is a 
 
 - Node.js compatible with the installed Vite version
 - npm
+
+### Setup
+
+```bash
+git clone https://github.com/atharhive/Margen.git
+cd Margen
+npm install
+npm run dev
+```
+
+Vite prints the local development URL after startup. The `dev` script binds to `0.0.0.0` on port `3000` by default.
+
+### Available scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm run dev` | Start the Vite development server on port 3000. |
+| `npm run build` | Build the production frontend into `dist/`. |
+| `npm run preview` | Preview the production build locally. |
+| `npm run lint` | Run TypeScript checking with `tsc --noEmit`. |
+| `npm run clean` | Remove generated `dist/` and `server.js` files. |
+
+## Configuration and privacy
+
+- `.env.example` documents `GEMINI_API_KEY` and `APP_URL` for a possible AI Studio deployment. The current frontend source does not make Gemini API calls, so these values are not needed to run the local prototype.
+- Never commit real credentials. The repository's `.gitignore` excludes `.env` files while allowing `.env.example`.
+- Waitlist entries are stored only in the browser's local storage. Clearing site data removes them; they are not sent to Margen or collected centrally.
+
+## Technology
+
+React 19 · TypeScript · Vite · Tailwind CSS 4 · Motion · Lucide
